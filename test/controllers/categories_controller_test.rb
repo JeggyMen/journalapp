@@ -3,12 +3,12 @@ require "test_helper"
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
     setup do
         @category_params = { category: { name: 'Work', description: 'Tasks related to work' } }
-      end
+    end
     
     test "should create category" do
         assert_difference('Category.count') do
             post categories_url, params: { category: { task_name: @category.category_name, description: @category.description}}
-        end
+    end
 
         assert_redirected_to category_url(Category.last)
         assert_equal 'Category was successfully created.', flash[:notice]
@@ -19,9 +19,19 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     
         assert_no_difference('Category.count') do
           post categories_url, params: @invalid_category_params
-        end
+    end
     
         assert_response :unprocessable_entity
-      end
+    end
+    
+    test "should get edit" do
+        get edit_category_url(@category)
+        assert_response :success
+    end
+
+    test "should update category" do
+      patch category_url(@category), params: { category: {description: @category.description, name: @category.name } }
+      assert_redirected_to category_url(@category)
+    end
 end
  
