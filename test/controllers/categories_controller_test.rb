@@ -33,5 +33,15 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
       patch category_url(@category), params: { category: {description: @category.description, name: @category.name } }
       assert_redirected_to category_url(@category)
     end
+
+    test "should get new" do
+        get new_category_url
+        assert_response :success
+    end
+
+    test "should show category" do
+        get category_url(@category)
+        assert_response :success
+    end
 end
  
