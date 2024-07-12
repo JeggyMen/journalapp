@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
     before_action :set_category, only: %i[ show edit update ]
-
+ 
     def new
         @category = Category.new
     end
@@ -36,6 +36,10 @@ class CategoriesController < ApplicationController
     end
 
     def show
+    end
+
+    def index
+        @categories = Category.all
     end
 
     private
