@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+    before_action :set_category, only: %i[ show edit update ]
+
     def new
         @category = Category.new
     end
@@ -33,9 +35,16 @@ class CategoriesController < ApplicationController
         end    
     end
 
-    private
-    def category_params
-      params.require(:category).permit(:name, :description)
+    def show
     end
+
+    private
+        def set_category
+                @category = Category.find(params[:id])
+        end
+
+        def category_params
+        params.require(:category).permit(:name, :description)
+        end
   end
   
