@@ -24,7 +24,10 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Task.count") do
       post category_tasks_path(@category), params: {task: { body: "New task is added."}}
     end
-
     assert_redirected_to category_task_path(@category, Task.last)
    end
+
+   test "should get edit" do
+    get edit_category_task_path(@category, @task)
+    assert_response :success
 end
