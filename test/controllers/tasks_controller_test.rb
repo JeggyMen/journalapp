@@ -36,5 +36,18 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
       get category_task_path(@category, @task) 
       assert_response :success
     end
+
+    test "should update task" do
+      patch category_task_path(@category, @task), params: {task: {title: @task.title, description: @task.description, due_date: @task.due_date, done: @task.done}}
+      assert_redirected_to category_task_path(@category, @task)
+    end
+
  
+    test "should destroy task for a specific category" do
+      assert_difference("Task.count", -1) do
+        delete category_task_path(@category, @task)
+      end
+  
+      assert_redirected_to category_path(@category)
+    end
 end
