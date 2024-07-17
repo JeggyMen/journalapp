@@ -1,1 +1,14 @@
-<%= @task.body %>
+<h1>Task Details</h1>
+
+<p>
+  <strong>ID:</strong>
+  <%= @task.id %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @task.body %>
+</p>
+
+<%= link_to 'Edit Task', edit_category_task_path(@category, @task) %>
+<%= link_to 'Back to Tasks', category_tasks_path(@category) %>

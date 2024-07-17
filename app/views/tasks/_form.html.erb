@@ -1,0 +1,24 @@
+<%= form_with model: [@category, @task] do |form| %>
+    <p>
+      <% if @task.errors.any? %>
+        <ul>
+          <% task.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+  
+        </ul>
+  
+      <% end %>
+  
+    <p>
+  
+    <p>
+      <%= form.label :body %><br/>
+      <%= form.text_field :body %>
+    </p>
+    <p>
+      <%= form.submit %>
+    <p>
+  <% end %>      
+  
+  

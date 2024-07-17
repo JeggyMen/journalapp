@@ -30,4 +30,5 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
    test "should get edit" do
     get edit_category_task_path(@category, @task)
     assert_response :success
+ end
 end

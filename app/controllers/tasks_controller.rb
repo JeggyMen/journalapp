@@ -6,6 +6,7 @@ class TasksController < ApplicationController
    end
    
    def new
+     @category = Category.find(params[:category_id])
      @task = @category.tasks.build
    end
 
@@ -23,7 +24,8 @@ class TasksController < ApplicationController
    end
 
    def edit
-    
+    @category = Category.find(params[:category_id])
+    @task = @category.tasks.find(params[:id])
    end
 
    private
